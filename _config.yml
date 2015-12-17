@@ -12,7 +12,7 @@ author:
   facebook : http://facebook.com/benjamin.td
   github   : http://github.com/benjamintd
 
-paginate: 2
+paginate: 4
 comments: true
 paginate_path: "/page/:num"
 disqus_shortname: willcarsdream
