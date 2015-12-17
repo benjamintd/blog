@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Will cars dream?</title>
+    <description>This is a blog about self-driving cars.</description>
+    <link>http://benjamintd.github.io/blog/</link>
+    <atom:link href="http://benjamintd.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 17 Dec 2015 10:42:05 -0800</pubDate>
+    <lastBuildDate>Thu, 17 Dec 2015 10:42:05 -0800</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Open Source, Software and Self Driving Cars</title>
+        <description>&lt;p&gt;The automotive industry is entering a weird era. There was a time when engineering and manufacturing a good car was hard, and good practices were still to be established. Those who were the best at it stood out and became the giants that we know: GM, Ford, Toyota, etc. This industry is now mature: cars have not changed so much in the last two decades if you compare to the technology improvements - at least from the user’s perspective. Changes to new models are mainly incremental details in the industrial design, or adding new minor options.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, the industry is on the verge of a huge disruption, with self-driving cars. The current development of autonomous vehicles shows that software companies are the most likely to win the race to market. Google, Baidu, Tesla, Apple… Engineering a self-driving software has become the hard problem, and those who are the best at it will stand out.&lt;/p&gt;
+
+&lt;p&gt;This raises a number of issues, because the software industry is so radically different from the automotive industry. The first main difference is testability. A number of independant organizations are dedicated to testing cars, to assess their resistance to crashes (IIHS) and to give them accreditation for release. Even though audits are frequent in the software world, there is still no external entity dedicated to testing self-driving software.&lt;/p&gt;
+
+&lt;p&gt;Of course, there are tons of tests done in-house, but consuming software relies a lot on trust, for most users. I trust Google that their security engineers protect my data efficiently. I trust Microsoft that my Powerpoint will not crash in the middle of my presentation. The truth is, there has been no third party between Google and me to certify that their software update is safe for me. There is no quality label other than their brand name that can assure that.&lt;/p&gt;
+
+&lt;p&gt;You can imagine how this may become a problem when this software controls a vehicle at 70 mph on the highway. I am not skeptical about Google’s ability to release robust software, but simply pointing out that releasing software is nothing like releasing a car.&lt;/p&gt;
+
+&lt;p&gt;The other issue is that flaws in software are not as easily detectable as mechanical failures. The reason is that it is possible to break a car apart, and examine the pieces one by one. It is easy to reverse-engineer a car. This is not possible for compiled software (although there are techniques that exist to decompile a program, and thus access parts of the source code, but big companies know how to protect against that).&lt;/p&gt;
+
+&lt;p&gt;In order to test the autonomous car, we can feed the program with a variety of inputs and check that the outputs are correct; but in the case of a self-driving car, the number of possible situations makes “unit testing” the program as a whole very tidious.&lt;/p&gt;
+
+&lt;p&gt;One possible way to go is to make the code open source. Everyone can look, test, and contribute to the code, making it more reliable and easier for third-parties to audit.&lt;/p&gt;
+
+&lt;p&gt;Seeing the trend for Silicon Valley players to open-source their precious algorithms, especially for deep learning and artificial intelligence (TensorFlow with Google, Torch and Big Sur for Facebook), I can imagine this happening for self-driving cars. There already exists an open source Robot Operating System (ROS) on which self-driving algorithms could be built.&lt;/p&gt;
+
+&lt;p&gt;Will the big players want to go with the open-source movement? I think so. This is an opportunity to gain trust from governments, the public, and create a community of supporters.&lt;/p&gt;
+
+&lt;p&gt;Why would they want to give up such amount of intellectual property developed over years of research?&lt;/p&gt;
+
+&lt;p&gt;I think the answer is: because they have the data. The software does not run by itself. It is supported by huge amounts of data about the environment: the maps that run the car, the training images that the models use to recognize a pedestrian from a tree, or a stroller from a cardboard box, etc. Those who can extract meaningful knowledge from the world and feed it to the self-driving cars will probably be ahead of the competition.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 17 Dec 2015 02:00:03 -0800</pubDate>
+        <link>http://benjamintd.github.io/blog/open-source-and-self-driving-cars/</link>
+        <guid isPermaLink="true">http://benjamintd.github.io/blog/open-source-and-self-driving-cars/</guid>
+        
+        
+        <category>sdc</category>
+        
+        <category>open-source</category>
+        
+      </item>
+    
+      <item>
+        <title>There is no Middle Ground for Autonomous Cars</title>
+        <description>&lt;p&gt;On many articles that I read about self-driving cars, there is this timeline that shows the different steps towards a fully autonomous vehicle. It first starts as a highway cruise mode, such as Tesla’s Autopilot, then progresses to more and more autonomy, with the user having to intervene every 10 miles, 100 miles, 1000 miles until we reach a Google-like future with no wheel and pedals at all. I think the road to self driving cars will not be that smooth.&lt;/p&gt;
+
+&lt;p&gt;I believe the reason is not that the product will not be ready or unsafe, but rather that the customers are not ready (nor safe).&lt;/p&gt;
+
+&lt;p&gt;Take a look at what is happening right now. Even in a setup where customers are aware that the autopilot is only an assistance system, and are liable for any damage that it might cause, drivers start looking away. We have seen videos of Tesla users leaving the front seat or engage in dangerous behaviors, to the point that the company may release an upgrade that limits the software’s capabilities on certain roads. The lesson here is that trusting technology is incredibly easy once we see it working. The users are not to blame if they toggle the autopilot to focus on something else than boring highway driving. What is the point of having an autopilot if you still have to concentrate on the road as much as if you were driving yourself? The issue is that human drivers will still be required to keep an eye on the road, even though interventions from them will be less and less needed as technology improves. Those behaviors will happen even more when failure rates drop down to one in a thousand miles, leading to easily avoidable accidents.&lt;/p&gt;
+
+&lt;p&gt;This problem of losing attention does not occur in a fully autonomous car, where users are not expected to take over the vehicle at any time. Until we build such a car, drivers will need to remain focused on the road and detect system failures, however rare they can be. Therefore, the transition from autopilot as an assistance system to a fully autonomous car cannot be smooth, from the driver’s perspective: you either have to remain master of your vehicle at all times, or are allowed to sleep while on the highway.&lt;/p&gt;
+
+&lt;p&gt;In my opinion, users should never have to watch for system failures in autonomous mode. There is only one way this can happen: if the system never fails.&lt;/p&gt;
+
+&lt;p&gt;How can we be sure that the system never fails? Until we figure out how cars can handle any situation perfectly, we have to limit their scope.
+Take the example of autonomous buses, that start arriving in Switzerland, France, and the US to name a few. This is a perfect example of a limited scope with control on the environment (think theme park shuttles, airport buses, etc.). The limited area makes it easier for the bus to perfectly know its surroundings, and makes testing and quality assurance easier. In the same fashion, it is possible to operate self-driving taxis for known origins and destinations, as it is planned for Tokyo Olympic Games in 2020. In all of these situations, the user is never in control of the vehicle, and failures become virtually impossible due to specific knowledge about the environment. Those vehicles reach full autonomy, but on a limited scope.&lt;/p&gt;
+
+&lt;p&gt;I guess the point is that the required reliability for full autonomy will only come with an extended knowledge of the environment. All achievements in difficult settings have been made possible by having highly accurate prior mapping of the area. The usual approach is to have a 3D map of the environment, that enables high-precision localization. These maps are costly to make because every street needs to be surveyed regularly, with expensive equipment (Lidar, especially). This is ok to do for a few bus routes, but regular updates of all the network will be extremely expensive and time-consuming. Hopefully, better and cheaper localization can be achieved in the future when the costs of hardware decrease, which will allow more vehicles to contribute to the effort of 3D-mapping the world.&lt;/p&gt;
+
+&lt;p&gt;This map is a static view of the world and is a way of making up for the inherent GPS imprecision and add infrastructure information such as lane markings and obstacles.&lt;/p&gt;
+
+&lt;p&gt;I believe there is a second, underestimated layer of mapping necessary for a self-driving car to navigate this static infrastructure. This is a behavior layer that would describes how objects move in the infrastructure space. Of course, I am biased by the fact that I am building such a map, but think about it: because of the large taxonomy of intersections, it is unrealistic to try to handle every situation through a single software that remains testable and maintainable (although guys at NuTonomy are trying to tackle the complexity issue). However, I think we can know a lot about an intersection before being on the spot and use sets of rules coupled to captor information to know how to behave in that specific context. What are the possible maneuvers? Are the vehicles around me following a known trajectory? Where am I supposed to stop in order to make that left turn? Can I predict the intents of the other drivers?&lt;/p&gt;
+
+&lt;p&gt;This information can also be surveyed (as Nokia Here is doing with their HD map), but with some care it can be extracted simply from observing real drivers behave. We can do this from simply extracting GPS traces from those vehicle, and perform some statistical analysis to cluster them into meaningful reference trajectories and maneuvers. This layer can serve as a backup or a template behavior to adapt in specific situations. Furthermore, it is self-validating and scales cheaply.&lt;/p&gt;
+
+&lt;p&gt;This layer has the potential to bring the reliability of self-driving cars to the level where you can finally sleep during your daily commute, by giving context awareness to the vehicle, and help cross the huge gap that I think there is from limited assistance systems to fully autonomous vehicles.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 10 Dec 2015 02:00:03 -0800</pubDate>
+        <link>http://benjamintd.github.io/blog/There-is-no-middle-ground-for-autonomous-cars/</link>
+        <guid isPermaLink="true">http://benjamintd.github.io/blog/There-is-no-middle-ground-for-autonomous-cars/</guid>
+        
+        
+        <category>sdc</category>
+        
+        <category>maps</category>
+        
+      </item>
+    
+  </channel>
+</rss>

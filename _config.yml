@@ -1,0 +1,25 @@
+# Site settings
+title: Will cars dream?
+email: benjamin.tdm@gmail.com
+description: This is a blog about self-driving cars.
+baseurl: "/blog"
+url: "http://benjamintd.github.io"
+
+author:
+  name     : 'BenjaminTD'
+  email    : benjamin.tdm@gmail.com
+  url      : http://benjamintd.github.io
+  facebook : http://facebook.com/benjamin.td
+  github   : http://github.com/benjamintd
+
+paginate: 2
+comments: true
+paginate_path: "/page/:num"
+
+sass:
+  style: :compressed
+  sass_dir: _sass
+
+# Build settings
+markdown  : kramdown
+permalink : /:title/
