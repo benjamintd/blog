@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Open Source, Software and Self Driving Cars"
+title:  "Open Source, Software, and Self Driving Cars"
 date:   2015-12-17 10:00:03
 categories: sdc open-source
 comments: true
