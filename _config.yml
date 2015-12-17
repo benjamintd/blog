@@ -15,6 +15,7 @@ author:
 paginate: 2
 comments: true
 paginate_path: "/page/:num"
+disqus_shortname: willcarsdream
 
 sass:
   style: :compressed
