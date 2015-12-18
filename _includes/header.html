@@ -1,29 +1,30 @@
 <header class="header">
-
-  <div class="overlay">
-
+<!-- Navigation -->
+<nav class="navbar navbar-custom" role="navigation">
     <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="{{ site.baseurl }}/">
+                <i class="glyphicon glyphicon-chevron-right"></i>{{ site.title }}
+            </a>
+        </div>
 
-      <h1 class="title">
-        <a href="{{ site.baseurl }}/">{{ site.title }}</a>
-      </h1>
-
-      <nav class="navbar">
-        <a href="#" class="menu-icon">
-          <span></span>
-          <span></span>
-        </a>
-
-        <ul class="nav">
-          {% for page in site.pages %}
-            {% if page.title and page.title != 'Home' %}
-            <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
-            {% endif %}
-          {% endfor %}
-          <li><a href="{{ site.author.url }}" target="_blank">the autor</a></li>
-        </ul>
-      </nav>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                {% for page in site.pages %}
+                    {% if page.title and page.title != 'Home' %}
+                    <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+          <li><a href="{{ site.author.url }}" target="_blank">The author</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-  </div>
-
+    <!-- /.container -->
+</nav>
 </header>
+

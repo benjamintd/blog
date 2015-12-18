@@ -1,4 +1,3 @@
-
 //
 // container
 .container {
@@ -34,123 +33,84 @@
   }
 }
 
-
-//
-// Site header
-.header {
-  background: #FFF url(../images/dodecahedron.svg) no-repeat bottom center scroll;
-  @include background-size(cover);
-  border-bottom: 1px solid $gray-color-light;
-  border-top: 3px solid $primary-color;
-  min-height: 60px;
-  position: relative;
-  @extend %clearfix;
-  padding: 60px 0;
-  margin-bottom: 30px;
-
-  .overlay {
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-  }
-
-  a {
-    color: #000;
-  }
-
-  @include media-query($on-phone) {
-    text-align: center;
-  }
-
-  .txt-center {
-    color: #000;
-    margin-top: 160px;
-    font-weight: 300;
-  }
+.navbar-custom {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    background-color: #F2F4F4;
 }
 
-.home .header {
-  padding: 50px 0 100px;
+.navbar-custom .navbar-brand {
+    font-weight: 700;
 }
 
-//
-// site title
-.title {
-  font-size: 32px;
-  line-height: 65px;
-  letter-spacing: -1px;
-  margin: 0;
-  float: left;
-  color: darken($white-color, 10%);
-  font-family: $font-family-base;
+.navbar-custom .navbar-brand:focus {
+    outline: 0;
+}
 
-  @include media-query($on-phone) {
-    float: none;
-    display: block;
-    width: 100%;
-  }
+.navbar-custom .navbar-brand .navbar-toggle {
+    padding: 4px 6px;
+    font-size: 16px;
+    color: #2F4F4F;
+}
 
-  & a:hover,
-  & a:focus {
-    color: lighten(#00616a, 10%);
+.navbar-custom .navbar-brand .navbar-toggle:focus,
+.navbar-custom .navbar-brand .navbar-toggle:active {
+    outline: 0;
+}
+
+.navbar-custom a {
     text-decoration: none;
-    border-color: lighten(#00616a, 10%);
-  }
+    color: #00616a;
 }
 
-//
-// navbar
-.navbar {
-  float: right;
-
-  @include media-query($on-phone) {
-    float: none;
-  }
+.navbar-custom .nav li a {
+    font-size: 14px;
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
 }
 
-//
-// ul nav
-.nav {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.navbar-custom .nav li a:hover {
+    outline: 0;
+    color: #FF5800;
+    background-color: transparent;
+}
 
-  li {
-    padding: 20px;
-    margin: 0;
-    text-transform: lowercase;
-    float: left;
-    display: inline-block;
-    @include transition(background .2s linear);
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:active {
+    outline: 0;
+    background-color: transparent;
+}
 
-    &:last-child {
-      padding-right: 0;
+.navbar-custom .nav li.active {
+    outline: 0;
+}
+
+.navbar-custom .nav li.active a {
+    background-color: #d1dee0;
+}
+
+
+@media(min-width:768px) {
+    .navbar-custom {
+        padding: 20px 0;
+        border-bottom: 0;
+        letter-spacing: 1px;
+        background: 0 0;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
     }
 
-    @include media-query($on-phone) {
-      float: left;
-      width: percentage(1/3);
-      text-align: center;
+    .navbar-custom.top-nav-collapse {
+        padding: 0;
+        background: #FFF;
     }
-  }
-
-  a {
-    padding: 0;
-    display: inline-block;
-    text-decoration: none;
-    color: darken($white-color, 25%);
-    @include transition(color .2s linear);
-  }
-
-  li.active a,
-  li:hover a,
-  li:focus a {
-    color: lighten($primary-color, 10%);
-    text-decoration: none;
-  }
 }
+
 
 //
 // menu icon
@@ -269,7 +229,7 @@
     width: 35px;
     height: 35px;
     padding: 7px;
-    background: #DADADA;
+    background: #fff;
     text-align: center;
     color: #494949;
     transition: all .2s ease-in;

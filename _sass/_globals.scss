@@ -25,6 +25,10 @@ html {
 
 body {
   background-color: $bg-color;
+  background-image: url("../images/dodecahedron.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
   font-size: $font-size-base;
   font-family: $font-family-base;
   -webkit-font-smoothing: antialiased;
