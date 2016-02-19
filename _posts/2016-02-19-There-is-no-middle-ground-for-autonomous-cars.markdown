@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "There is no Middle Ground for Autonomous Cars"
-date:   2015-12-10 10:00:03
+date:   2016-02-19 10:00:03
 categories: sdc maps
 comments: true
 ---
@@ -23,13 +23,13 @@ Take the example of autonomous buses, that start arriving in [Switzerland][swiss
 
 I guess the point is that the required reliability for full autonomy will only come with an extended knowledge of the environment. All achievements in difficult settings have been made possible by having highly accurate [prior mapping of the area][mapping]. The usual approach is to have a 3D map of the environment, that enables high-precision localization. These maps are costly to make because every street needs to be surveyed regularly, with expensive equipment (Lidar, especially). This is ok to do for a few bus routes, but regular updates of all the network will be extremely expensive and time-consuming. Hopefully, better and cheaper localization can be achieved in the future when the costs of hardware decrease, which will allow more vehicles to contribute to the effort of 3D-mapping the world.
 
-This map is a static view of the world and is a way of making up for the inherent GPS imprecision and add infrastructure information such as lane markings and obstacles. 
+This map is a static view of the world and is a way of making up for the inherent GPS imprecision and add infrastructure information such as lane markings and obstacles. It also helps identifying moving objects. However it is costly to produce and increadibly heavy in data.
 
-I believe there is a second, underestimated layer of mapping necessary for a self-driving car to navigate this static infrastructure. This is a behavior layer that would describes how objects move in the infrastructure space. Of course, I am biased by the fact that I am building [such a map][vds], but think about it: because of the large taxonomy of intersections, it is unrealistic to try to handle every situation through a single software that remains testable and maintainable (although guys at [NuTonomy][nutonomy] are trying to tackle the complexity issue). However, I think we can know a lot about an intersection before being on the spot and use sets of rules coupled to captor information to know how to behave in that specific context. What are the possible maneuvers? Are the vehicles around me following a known trajectory? Where am I supposed to stop in order to make that left turn? Can I predict the intents of the other drivers?
+I believe there is a second, underestimated layer of mapping necessary for a self-driving car to navigate this static infrastructure. This is a behavior layer that would describes *how* objects move in the infrastructure space. Of course, I am biased by the fact that I am building [such a map][exonav], but think about it: because of the large taxonomy of intersections and maneuvers, it is unrealistic to try to handle every situation through a single software that remains testable and maintainable (although guys at [NuTonomy][nutonomy] are trying to tackle the complexity issue), and - most importantly - reliable enough to take safety critical decisions. However, I think we can know a lot about an intersection before being on the spot and compute know how to behave in that specific context. What are the possible maneuvers? Are the vehicles around me following a known trajectory? Where am I supposed to stop in order to make that left turn? Can I predict the intents of the other drivers? 
 
-This information can also be surveyed (as Nokia Here is doing with their [HD map][hd map]), but with some care it can be extracted simply from observing real drivers behave. We can do this from the extraction of GPS traces from those vehicle, and perform some statistical analysis to cluster them into meaningful reference trajectories and maneuvers. This layer can serve as a backup or a template behavior to adapt in specific situations. Furthermore, it is self-validating and scales cheaply. 
+With some care, this information can be extracted simply from observing real drivers behave. We can do this from the extracting driving data traces from those vehicle, and perform some statistical analysis to cluster them into meaningful reference trajectories and maneuvers. We can infer the lane topology of the network without surveying the streets with expensive equipment (like what Here is doing with their [HD Map][hd map]). This layer can serve as a backup or a template behavior to adapt in specific situations. Furthermore, it is self-validating and scales cheaply. Mobileye [recently announced][mobileye] its goal to produce a similar map at CES.
 
-This layer has the potential to bring the reliability of self-driving cars to the level where you can finally sleep during your daily commute, by giving context awareness to the vehicle, and help cross the huge gap that I think there is from limited assistance systems to fully autonomous vehicles.
+This behavioral layer has the potential to bring the reliability of self-driving cars to the level where you can finally sleep during your daily commute, by giving context awareness to the vehicle in every tricky situation, and help cross the huge gap that I think there is from limited assistance systems to fully autonomous vehicles.
 
 [tesla backseat]: https://youtu.be/-okFVuHlxII?t=50
 [tesla upgrade]: http://mashable.com/2015/12/11/tesla-restrict-autopilot-report/
@@ -37,8 +37,8 @@ This layer has the potential to bring the reliability of self-driving cars to th
 [us buses]: http://gizmodo.com/the-uss-first-autonomous-buses-will-drive-around-a-cali-1734989938
 [tokyo games]: http://www.japantimes.co.jp/news/2015/10/04/business/tech/self-driving-cars-let-tourists-ride-tokyo-2020-abe-says/#.VnSIOnUrI8o
 [mapping]: http://www.gizmag.com/self-driving-car-mexico/40013/
-[vds]: http://www.vds-corp.com/products/
+[exonav]: http://www.exonav.com/
 [nutonomy]: http://nutonomy.com/
 [hd map]: http://www.slashgear.com/inside-the-nokia-here-hd-maps-putting-google-on-notice-18325742/
-
+[mobileye]: https://www.youtube.com/watch?v=fA3bOJIEOvU&feature=youtu.be&t=2319
 
