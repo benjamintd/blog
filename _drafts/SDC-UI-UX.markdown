@@ -16,23 +16,23 @@ Good news, though! Self-driving cars are coming, and will eventually make all th
 
 In the meantime, here is what I dream of.
 
-# Entertainment at the heart of the driving experience
+### Entertainment at the heart of the driving experience
 I ride BART every day (the Bay Area metro), and I watch people commute. I see them watching movies, playing games, solving puzzles, listening to music. They do not like to be idle. Autonomous cars are an opportunity to give a premium entertainment experience, playing with the limited space and road scenery. The car audio experience can also be pretty amazing, especially in silent electric vehicles. How great would it be to have a car built around your couch - with seatbelts, please - and a big screen in place of a dashboard? All of this with a good soundsystem and LEDs on the door frames that adjust to the exterior light or the movie you are watching. A personal drive-in theater, while on the highway.
 
-# The car as an office extension
+### The car as an office extension
 Of course, not everyone has the luxury to spend time on Netflix when they travel or commute. So many hours of productivity are lost in traffic. [Half a million *years*][time-congestion] of time collectively wasted in congestion per year. A lot could be achieved in that time, and cars will likely become an office extension. It is the best time to perform lower concentration tasks such as digesting news or reply email, or even chat in videoconference. Designers will have a good time thinking about how to make the transitions from the office to the vehicle smooth, how to reduce set-up time to a minimum, and create a secure environment where busy people can forget about the outside world.
 
-# The car as a resting area
-Who does not like to sleep? What is better than arriving fresh and rested after a night of travel? Self Driving Cars have the potential to deliver business class level trips at small cost. It is not so crazy to imagine leaving San Francisco around 10pm on a Friday night and arrive at San Diego at 7 the next morning, with a 10 min battery swap in between. All without sacrificing a minute of sleep. I envision a one or two passengers car with airplane-like premium seats that can reach totally horizontal positions.
+### The car as a resting area
+Who does not like to sleep? What is better than arriving fresh and rested after a night of travel? Self Driving Cars have the potential to deliver business class level trips at small cost. It is not so crazy to imagine leaving San Francisco around 10pm on a Friday night and arrive at San Diego at 7 the next morning, with a short battery swap in between. All without sacrificing a minute of sleep. I envision a one or two passengers car with airplane-like premium seats that can reach totally horizontal positions.
 
-# Public taxis versus personal cars
+### Public taxis versus personal cars
 What about shorter trips? When all Uber/Lyft drivers will have become robots, there will be a ton of design questions to answer. How do users authenticate once the car is at the pick-up location? What about loading/unloading when they have luggage? How does the vehicle make people feel safe, remind them to attach their seatbelts, ask them for the destination? How do you handle anxious people who have never been driven by a SDC before? What happens to the casual taxi driver chat? Lots of small details probably need to be thought through to turn those trips into the 'wahoo' moment that will trigger SDC adoption. While all of my previous scenarii mostly apply to personal cars, it is likely that the first contact and primary use of fully autonomous driving will be on-demand mobility.
 
-# The airline future of mobility
+### The airline future of mobility
 When you think about it, the use cases I discussed look familiar. Traveling while watching movies, with a desk, in a seat you can sleep in, with a special care for the onboarding and safety? This sounds a lot like an airplane trip to me.
-I think self-driving cars manufacturers and operators can learn a lot from air traffic and airline user experience. In particular, I believe the brand of the car will not matter a lot for on-demand mobility. You do not say that you fly with Airbus or Boeing. You say Virgin, Delta, Air France. Those companies are responsible for providing you with the experience. What will matter is the quality of the commute, the offering of movies or shows aboard, the ease with which you can start working hard, how well you are rested when you arrive, etc. Uber, for instance, made a pretty big impression only by requesting the drivers to provide free water bottles to the riders. That is a great and simple UX trick. If those operators start being responsible for the interior design of their autonomous taxis too, I cannot wait to know what they can do.
+I think self-driving cars manufacturers and operators can learn a lot from air traffic and airline user experience. In particular, I believe the brand of the car will not matter a lot for on-demand mobility. You do not say that you fly with Airbus or Boeing. You say Virgin, Delta, Air France. Those companies are responsible for providing you with the experience. What will matter is the quality of the commute, the offering of movies or shows aboard, the ease with which you can start working hard, how well you are rested when you arrive, etc. Uber, for instance, is known provide free water bottles to the riders. That is a great and simple UX trick. If those operators start being responsible for the interior design of their autonomous taxis too, who knows what a taxi ride will be like.
 
-# An open space for operators?
+### An open space for operators?
 Uber, Lyft and their competitors are probably already planning to enter the space of becoming airlines-like businesses for short-distance on-demand trips. I am wondering if there are market shares to be grabbed in that space for new companies, or if the advance those over-funded "startups" have taken is already too big. I suspect UX will be key in convincing the public to chose one service over the other, and this is a battle from which the consumers will greatly benefit.
 
 
