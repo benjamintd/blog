@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Car User Experience In Full Autonomy"
+date:   2016-03-02 10:00:03
+categories: sdc ux
+comments: true
+---
+
+![Google Car Interior]({{site.baseurl}}/images/posts/interior.jpg)
+
+User Experience design is fascinating. I like how it needs to be constantly refined, fine-tuned, tweaked, to achieve perfect simplicity.
+
+What I enjoy most with UX design is playing with constraints. Having no constraints makes it difficult to reach good design, because the lack of purpose usually gives poor results. Too many constraints kill the creative process and make it hard to reach pure and simple design.
+
+In my opinion, UX in current cars suffer the latter symptom, although for a good reason. Any driver with a license has to be able to drive any car in the world, which restricts the interfaces to obey strict rules for uniformity. Those rules organically piled up as the technology and laws developed, and in turn car interiors have become overcrowded with buttons and signals that have become so standard that they are impossible to get rid of. This is great, as anyone can figure out how a car they never saw before works, yet not very practical from a design standpoint. As an example, think about how most cars released in the last few years (or so) can handle headlight control automatically, but still have an awful lot of buttons to manually manipulate them.
+
+Good news, though! Self-driving cars are coming, and will eventually make all these constraints obsolete, leaving a clean sandbox for designers to re-think the car experience. We have seen great prototypes and concepts from [Google][google-car], [Mercedes][mercedes], and others, which look amazing (and simple again). Apple is [supposedly][apple] working on some level on car interface design, if not a car entirely. They have a history of setting design standards industry-wise for several product categories, so I look forward to seeing what they can do about automobile interfaces.
+
+In the meantime, here is what I dream of.
+
+# Entertainment at the heart of the driving experience
+I ride BART every day (the Bay Area metro), and I watch people commute. I see them watching movies, playing games, solving puzzles, listening to music. They do not like to be idle. Autonomous cars are an opportunity to give a premium entertainment experience, playing with the limited space and road scenery. The car audio experience can also be pretty amazing, especially in silent electric vehicles. How great would it be to have a car built around your couch - with seatbelts, please - and a big screen in place of a dashboard? All of this with a good soundsystem and LEDs on the door frames that adjust to the exterior light or the movie you are watching. A personal drive-in theater, while on the highway.
+
+# The car as an office extension
+Of course, not everyone has the luxury to spend time on Netflix when they travel or commute. So many hours of productivity are lost in traffic. [Half a million *years*][time-congestion] of time collectively wasted in congestion per year. A lot could be achieved in that time, and cars will likely become an office extension. It is the best time to perform lower concentration tasks such as digesting news or reply email, or even chat in videoconference. Designers will have a good time thinking about how to make the transitions from the office to the vehicle smooth, how to reduce set-up time to a minimum, and create a secure environment where busy people can forget about the outside world.
+
+# The car as a resting area
+Who does not like to sleep? What is better than arriving fresh and rested after a night of travel? Self Driving Cars have the potential to deliver business class level trips at small cost. It is not so crazy to imagine leaving San Francisco around 10pm on a Friday night and arrive at San Diego at 7 the next morning, with a short battery swap in between. All without sacrificing a minute of sleep. I envision a one or two passengers car with airplane-like premium seats that can reach totally horizontal positions.
+
+# Public taxis versus personal cars
+What about shorter trips? When all Uber/Lyft drivers will have become robots, there will be a ton of design questions to answer. How do users authenticate once the car is at the pick-up location? What about loading/unloading when they have luggage? How does the vehicle make people feel safe, remind them to attach their seatbelts, ask them for the destination? How do you handle anxious people who have never been driven by a SDC before? What happens to the casual taxi driver chat? Lots of small details probably need to be thought through to turn those trips into the 'wahoo' moment that will trigger SDC adoption. While all of my previous scenarii mostly apply to personal cars, it is likely that the first contact and primary use of fully autonomous driving will be on-demand mobility.
+
+# The airline future of mobility
+When you think about it, the use cases I discussed look familiar. Traveling while watching movies, with a desk, in a seat you can sleep in, with a special care for the onboarding and safety? This sounds a lot like an airplane trip to me.
+I think self-driving cars manufacturers and operators can learn a lot from air traffic and airline user experience. In particular, I believe the brand of the car will not matter a lot for on-demand mobility. You do not say that you fly with Airbus or Boeing. You say Virgin, Delta, Air France. Those companies are responsible for providing you with the experience. What will matter is the quality of the commute, the offering of movies or shows aboard, the ease with which you can start working hard, how well you are rested when you arrive, etc. Uber, for instance, is known provide free water bottles to the riders. That is a great and simple UX trick. If those operators start being responsible for the interior design of their autonomous taxis too, who knows what a taxi ride will be like.
+
+# An open space for operators?
+Uber, Lyft and their competitors are probably already planning to enter the space of becoming airlines-like businesses for short-distance on-demand trips. I am wondering if there are market shares to be grabbed in that space for new companies, or if the advance those over-funded "startups" have taken is already too big. I suspect UX will be key in convincing the public to chose one service over the other, and this is a battle from which the consumers will greatly benefit.
+
+
+[time-congestion]: http://content.time.com/time/nation/article/0,8599,1909417,00.html
+[google-car]: http://roa.h-cdn.co/assets/15/06/980x490/landscape_nrm_1423270809-goog_sdc_1.jpg
+[mercedes]: https://www.mercedes-benz.com/wp-content/uploads/sites/3/2015/01/04-research-vehicle-F-015-Luxury-in-Motion-Mercedes-Benz-680x379-DE.jpg
+[apple]: http://appleinsider.com/articles/15/11/09/shadowy-group-linked-to-apples-project-titan-spotted-at-auto-industry-conference
+
