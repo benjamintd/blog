@@ -126,17 +126,15 @@
       margin-bottom: 10px;
       // text-transform: uppercase;
       line-height: 1.3em;
-      font-size: 1.8rem;
+      font-size: 2em;
     }
 
     a {
       color: $text-color;
       @include transition(color .2s linear);
-
       &:hover,
       &:focus {
         color: $primary-color;
-        text-decoration: none;
       }
     }
   }
@@ -154,7 +152,15 @@
   img {
     max-width: 100%;
     vertical-align: middle;
+    padding: 10px;
   }
+}
+
+
+.post-content {
+  font-size: 1.2em;
+  text-align: justify;
+  font-weight: lighter;
 }
 
 .single {

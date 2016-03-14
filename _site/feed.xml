@@ -5,9 +5,67 @@
     <description>This is a blog about self-driving cars.</description>
     <link>http://benjamintd.github.io/blog/</link>
     <atom:link href="http://benjamintd.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 12 Mar 2016 14:35:53 -0800</pubDate>
-    <lastBuildDate>Sat, 12 Mar 2016 14:35:53 -0800</lastBuildDate>
+    <pubDate>Tue, 15 Mar 2016 09:30:32 -0700</pubDate>
+    <lastBuildDate>Tue, 15 Mar 2016 09:30:32 -0700</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Operating a Fleet of Robots</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/posts/robottaxi.jpg&quot; alt=&quot;Robot Taxi&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;when-todays-problems-are-solved&quot;&gt;When today’s problems are solved…&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://fortune.com/2015/03/18/tesla-elon-musk-and-nvidia-ceoself-driving-cars/&quot;&gt;As Elon would say&lt;/a&gt;, making a car drive itself is basically a solved problem.&lt;/p&gt;
+
+&lt;p&gt;By that I mean that it is only a matter of time before we are able to make a robot drive in most situations, while being at least an order of magnitude safer than a human. How long it will take is still open for discussion: Tesla - optimistically - says we will reach that point &lt;a href=&quot;http://www.theverge.com/2016/1/10/10746020/elon-musk-tesla-autonomous-driving-predictions-summon&quot;&gt;by 2018&lt;/a&gt;. Continental says &lt;a href=&quot;https://www.2025ad.com/&quot;&gt;2025&lt;/a&gt; will be the year of automated driving. Google does not give a date, but their jobboard suggests that they are bulking up for vehicle design and going out of R&amp;amp;D. Outsiders like &lt;a href=&quot;http://zoox.com/&quot;&gt;Zoox&lt;/a&gt; market a 2020 goal. Recent improvements in machine vision performance suggest that there are no more technological barriers to reaching this goal - at least conceptually. What it will take is lots of engineering manhours, testing and &lt;a href=&quot;/blog/There-is-no-middle-ground-for-autonomous-cars/&quot;&gt;mapping&lt;/a&gt;, but we will get there eventually.&lt;/p&gt;
+
+&lt;p&gt;The next step is the exciting part. Now that I have autonomous cars, how should they be operated?&lt;/p&gt;
+
+&lt;p&gt;First of all, I strongly believe that self-driving vehicles will be mainly used as a service, not owned. Japan’s &lt;a href=&quot;https://robottaxi.com/en/&quot;&gt;RobotTaxi&lt;/a&gt;, Uber, Zoox and Google tend to agree with me on this point (or is it the other way around?). So let’s assume from here on that we are in control of a few hundred fully autonomous cars in a given city. Suppose you also have a Uber-like app that allows anyone in town to order a self-driving taxi instantly. How do you build the system that coordinates your fleet and dictates where each individual vehicle should go?&lt;/p&gt;
+
+&lt;p&gt;Thinking about the complexity of this problem gives me chills.&lt;/p&gt;
+
+&lt;h1 id=&quot;how-is-this-different-from-what-uber-already-does&quot;&gt;How is this different from what Uber already does?&lt;/h1&gt;
+
+&lt;p&gt;In a way, being in control of all your fleet should be easier than relying on drivers that take their own decisions, right? Then, there is no more uncertainty about the number of drivers on the road, whether they will pick up the next rider or take a break, etc. You have full control on each of your vehicles.&lt;/p&gt;
+
+&lt;p&gt;However there is a good thing about Uber drivers: they can make decisions on their own.&lt;/p&gt;
+
+&lt;p&gt;They decide when it is time to fill up the tank, start or stop driving, when to pick up a passenger or not. The more they drive, the better they know how to optimize their revenue by remembering the best time slots and neighborhoods. This may not be optimal from Uber’s point of view, but they have no other option.  What is left to them is only determining dynamic prices to balance the offer and demand.&lt;/p&gt;
+
+&lt;p&gt;I do not want to take any credit away from Uber and Lyft for what they achieved in that field, because this pricing problem is hard. However, it leaves a good part of the “computation” up to the drivers, since each individual driver makes decisions on their own. When operating a fleet of autonomous taxis, it will be up to the operator to take those decisions, which adds them a big computational overhead.&lt;/p&gt;
+
+&lt;p&gt;One solution would be to model the behavior of a single driver, program it into each of the cars, and use the same kind of algorithms as Uber currently does to run a fleet of robot taxis where each vehicle takes actions on its own. Easy, but not optimal.&lt;/p&gt;
+
+&lt;p&gt;A second solution is to have a central system that controls all vehicle flows.&lt;/p&gt;
+
+&lt;h1 id=&quot;one-brain-to-rule-them-all&quot;&gt;One brain to rule them all&lt;/h1&gt;
+
+&lt;p&gt;This is where you start having chills as well, don’t you? It’s like having to solve hundreds of &lt;a href=&quot;https://en.wikipedia.org/wiki/Travelling_salesman_problem&quot;&gt;travelling salesmen&lt;/a&gt; at once with dynamic demand, while handling battery charging (or swapping), dispatching your idle vehicles across the city to match demand forecasts, minimizing waiting times, all with uncertainty in the demand and travel times. There is also some tricky &lt;a href=&quot;https://en.wikipedia.org/wiki/Facility_location_problem&quot;&gt;facility location&lt;/a&gt; problems coming into play in order to chose where to place the charging stations and parking spots. All of this with demanding performance and reliability constraints. This is a really, really hard optimization problem. As an Operations Research engineer, I am torn between fear and excitement when I think about it.&lt;/p&gt;
+
+&lt;p&gt;This will be a big challenge to take on when fully autonomous taxis reach the market. Some folks have started working on it, like Improbable with their &lt;a href=&quot;http://www.traffictechnologytoday.com/news.php?NewsID=77573&quot;&gt;SpatialOS&lt;/a&gt;. Having a central Operating System that monitors an entire city’s mobility could be really powerful. It would allow to have faster, more balanced flows while reducing infrastructure and using less energy.&lt;/p&gt;
+
+&lt;p&gt;However, looking at the bigger picture, there are some tough design decisions to make when creating these algorithms. The fundamental question is: what do I optimize for?&lt;/p&gt;
+
+&lt;p&gt;Am I willing to let some customers take a longer ride, for the greater good of the city’s flows? Do I sacrifice service level to focus on dense neighborhoods with a higher yield? It is unclear that optimizing for revenue will push towards the big vision of cheap, on-demand mobility for all. Governemental or local agencies should have their say in managing those flows. Otherwise some areas will be under-served, leaving people behind in this revolution.&lt;/p&gt;
+
+&lt;h1 id=&quot;integrating-fleets-of-robot-taxis-in-the-city&quot;&gt;Integrating fleets of robot taxis in the city&lt;/h1&gt;
+
+&lt;p&gt;Ultimately, on-demand mobility will have to integrate with the existing infrastructure - rail networks for instance - for improved multi-modal transportation and better accessibility. Autonomous driving has the potential to be the cheap last-mile transportation mode that does not exist yet: taxis are expensive, bicycles are not always convenient, and buses schedules are not flexible. This integration will need a powerful central engine that can forecast flows and operate these vehicles seamlessly. Built the right way, such central system could save us energy, square footage of parking space, and a &lt;em&gt;lot&lt;/em&gt; of time.&lt;/p&gt;
+
+&lt;p&gt;Even more interesting will be the mutation of the cities around this mode of transportation once it is established. Most cities today are built to accomodate for cars. What happens when nobody owns a car anymore? More free space, pollution rates go down, people are happy. The design of cities will change accordingly, and this is a good thing. The faster we can figure how to deploy and operate large fleets of self-driving cars, the sooner we can start this joyful transition.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 14 Mar 2016 03:00:03 -0700</pubDate>
+        <link>http://benjamintd.github.io/blog/Operating-a-fleet-of-robots/</link>
+        <guid isPermaLink="true">http://benjamintd.github.io/blog/Operating-a-fleet-of-robots/</guid>
+        
+        
+        <category>sdc</category>
+        
+        <category>operations</category>
+        
+      </item>
     
       <item>
         <title>Car User Experience In Full Autonomy</title>

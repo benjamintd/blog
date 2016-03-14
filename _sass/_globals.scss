@@ -53,11 +53,11 @@ textarea {
 
 a {
   color: $link-color;
-  text-decoration: underline;
+  text-decoration: none;
 
   &:hover {
     transition: color .2s linear;
-    text-decoration: none;
+    text-decoration: underline;
     color: $link-hover-color;
   }
 }
