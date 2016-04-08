@@ -153,9 +153,16 @@
     max-width: 100%;
     vertical-align: middle;
     padding: 10px;
+    margin: auto;
+  }
+
+  img + em {
+    text-align: center;
+    font-size: .8em;
+    font-weight: normal;
+    display: block;
   }
 }
-
 
 .post-content {
   font-size: 1.2em;
