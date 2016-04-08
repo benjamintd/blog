@@ -5,9 +5,77 @@
     <description>This is a blog about self-driving cars.</description>
     <link>http://benjamintd.github.io/blog/</link>
     <atom:link href="http://benjamintd.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Mar 2016 09:30:32 -0700</pubDate>
-    <lastBuildDate>Tue, 15 Mar 2016 09:30:32 -0700</lastBuildDate>
+    <pubDate>Thu, 07 Apr 2016 15:42:31 -0700</pubDate>
+    <lastBuildDate>Thu, 07 Apr 2016 15:42:31 -0700</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Deep Driving is Getting Momentum</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/posts/comma.png&quot; alt=&quot;George Hotz in his test car&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A few news hit the self-driving car world this past week. On Monday, comma.ai secured a $3.1 million investment from a16z.
+On Tuesday, Nvidia was holding a GPU conference with a particular focus on self-driving technology, where they announced their DaveNet neural network.&lt;/p&gt;
+
+&lt;p&gt;What do those two events have in common and why is this a big paradigm shift in the way we think about self-driving tech?&lt;/p&gt;
+
+&lt;p&gt;Both &lt;a href=&quot;http://www.nvidia.com/content/global/global.php&quot;&gt;Nvidia&lt;/a&gt; and &lt;a href=&quot;http://comma.ai/&quot;&gt;comma.ai&lt;/a&gt; are experimenting with an end-to-end driverless car system controlled by a single (deep learning) neural network - although I’m unsure about comma, that’s what I inferred from Hotz’s interviews so far. These networks are trained to link a sensory input - mostly pixel data from various cameras around the car - to a control output - steering angle, acceleration/deceleration. The only design step needed to engineer such a system is to write the deep learning model, which leads to much smaller amounts of code than traditional approaches.&lt;/p&gt;
+
+&lt;p&gt;This is opposed to a roboticist way of tackling the problem, composed of these different steps:
+- localize yourself on a map
+- model your environment and external agents
+- forecast their future behavior
+- plan your actions in consequence, with rule-based algorithms
+- Act on your plan.&lt;/p&gt;
+
+&lt;p&gt;This approach comes from a long legacy of DARPA challenges at a time where Deep Learning was not really a thing (and computers not good enough for it anyways).&lt;/p&gt;
+
+&lt;p&gt;Now we are dealing with potentially much simpler algorithms. Don’t get me wrong, though. Building such a deep network is not an easy task. Driving is way more complicated than other vision deep learning applications like image classification, because of the time component involved. On top of that, because it is meant to be a safety-critical feature of a car, there are problematic issues of performance. Inference must be done in under 10-15 ms, which is flirting with the limits of top-notch GPUs (especially if your input is a time series of 8 camera feeds). If you want real-time training, this becomes even harder.&lt;/p&gt;
+
+&lt;p&gt;But once such an architecture is defined, what remains is training, training, and more training. These videos (&lt;a href=&quot;https://www.youtube.com/watch?v=YjTnYBaQQpw&quot;&gt;here&lt;/a&gt;, and &lt;a href=&quot;https://youtu.be/KnVVJSIiKpY?t=3751&quot;&gt;there&lt;/a&gt;) show that Nvidia and comma.ai’s networks start doing pretty well.&lt;/p&gt;
+
+&lt;h1 id=&quot;im-coming-for-you-tesla-google&quot;&gt;“I’m coming for you, Tesla, Google.”&lt;/h1&gt;
+
+&lt;p&gt;… says George Hotz, comma’s CEO. Is the traditional approach to self-driving software becoming irrelevant as “deep driving” improves? I cannot say for sure, but there will be some important barriers to overcome in order to make this work.&lt;/p&gt;
+
+&lt;p&gt;The first one I see is testability and reliability. Because we are no longer using rule-based code to determine which actions to take at a particular moment, it becomes difficult to debug a particular misbehavior from the system. We can train a car on instances of this problem until it does not pop up anymore, but there are no strict guarantees that the problem is solved.&lt;/p&gt;
+
+&lt;p&gt;On the same note, getting official approval to get these systems on the road may be difficult, if lives are at stake. Given that control systems in airplanes rely on 20 years-old research because more recent approaches are too difficult to test, I do not know how well will deep networks be received by safety organizations.&lt;/p&gt;
+
+&lt;p&gt;Finally, embedding road policies in those systems may be hard; we can never be sure that training examples that respect the law will yield an AI that always respects the law, as it remains a statistical process after all.&lt;/p&gt;
+
+&lt;h1 id=&quot;deep-building-blocks&quot;&gt;Deep building blocks&lt;/h1&gt;
+
+&lt;p&gt;However, it is not unconceivable to have parallel systems running for autonomous driving, and look for concensus between both - just like in airplanes, where two separate implementations of the same control system are required for redundancy. Deep driving could serve as a backup or confirmation for a traditional system, for instance in poorly mapped areas.&lt;/p&gt;
+
+&lt;p&gt;Additionally, the deep learning approach already exists in the driverless tech today. Recognizing cars, traffic signs, pedestrians, etc. is already done with neural nets. Going further, autonomous driving will realistically be a mix of rule-based models with deep learning building blocks: object recognition, pedestrian intent detection, object motion tracking and predicition, or even self-localization could be achieved by deep learning, all of which could feed the model of a rule-based path planning algorithm.&lt;/p&gt;
+
+&lt;p&gt;I am curious what this approach will give in the future. It is certainly receiving a lot of attention lately, and may one day become the standard for self-driving technology. Several other automakers are making that bet by teaming up with &lt;a href=&quot;http://www.bloomberg.com/news/articles/2016-03-16/automakers-go-back-to-school-to-learn-to-build-self-driving-cars&quot;&gt;Berkeley Deep Drive&lt;/a&gt;, including Ford, Toyota, Volkswagen.&lt;/p&gt;
+
+&lt;h1 id=&quot;some-reading-about-deep-learning&quot;&gt;Some reading about Deep Learning&lt;/h1&gt;
+
+&lt;p&gt;If you are interested in knowing more about deep learning, I recommend reading the following articles, books and research:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This &lt;a href=&quot;http://neuralnetworksanddeeplearning.com/index.html&quot;&gt;Deep Learning book&lt;/a&gt; is the best introduction I have read so far.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://deeplearning.net/tutorial/lenet.html#lenet&quot;&gt;A tutorial focused on Convolutional Neural Nets&lt;/a&gt;, using Theano&lt;/li&gt;
+  &lt;li&gt;Some more involved &lt;a href=&quot;http://cs231n.github.io/&quot;&gt;Stanford lecture notes&lt;/a&gt; to get you going.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.cv-foundation.org/openaccess/content_cvpr_2014/papers/Girshick_Rich_Feature_Hierarchies_2014_CVPR_paper.pdf&quot;&gt;A paper on object detection&lt;/a&gt; by the guys who created the Caffe framework&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&quot;&gt;A mind-blowing project on Recurrent Neural Networks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you want to get cranking on some code, looking at documentations for &lt;a href=&quot;http://caffe.berkeleyvision.org/tutorial/&quot;&gt;Caffe&lt;/a&gt; or &lt;a href=&quot;http://lasagne.readthedocs.org/en/latest/user/tutorial.html&quot;&gt;Lasagne&lt;/a&gt; is a good place to start. As a Python guy those are the frameworks that I want to learn.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 07 Apr 2016 03:00:03 -0700</pubDate>
+        <link>http://benjamintd.github.io/blog/deep-driving-is-getting-momentum/</link>
+        <guid isPermaLink="true">http://benjamintd.github.io/blog/deep-driving-is-getting-momentum/</guid>
+        
+        
+        <category>sdc</category>
+        
+        <category>deeplearning</category>
+        
+      </item>
     
       <item>
         <title>Operating a Fleet of Robots</title>
