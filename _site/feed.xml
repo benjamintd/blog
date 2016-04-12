@@ -5,12 +5,12 @@
     <description>This is a blog about self-driving cars.</description>
     <link>http://benjamintd.github.io/blog/</link>
     <atom:link href="http://benjamintd.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Apr 2016 08:32:15 -0700</pubDate>
-    <lastBuildDate>Fri, 08 Apr 2016 08:32:15 -0700</lastBuildDate>
+    <pubDate>Mon, 11 Apr 2016 18:29:08 -0700</pubDate>
+    <lastBuildDate>Mon, 11 Apr 2016 18:29:08 -0700</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
-        <title>Deep Driving is Getting Momentum</title>
+        <title>Deep Driving is Gaining Momentum</title>
         <description>&lt;p&gt;&lt;img src=&quot;/blog/images/posts/comma.png&quot; alt=&quot;George Hotz in his test car&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;A few news hit the self-driving car world this past week. On Monday, comma.ai secured a $3.1 million investment from a16z.
@@ -96,8 +96,8 @@ On Tuesday, Nvidia was holding a GPU conference with a particular focus on self-
 
 </description>
         <pubDate>Fri, 08 Apr 2016 03:00:03 -0700</pubDate>
-        <link>http://benjamintd.github.io/blog/deep-driving-is-getting-momentum/</link>
-        <guid isPermaLink="true">http://benjamintd.github.io/blog/deep-driving-is-getting-momentum/</guid>
+        <link>http://benjamintd.github.io/blog/deep-driving-is-gaining-momentum/</link>
+        <guid isPermaLink="true">http://benjamintd.github.io/blog/deep-driving-is-gaining-momentum/</guid>
         
         
         <category>sdc</category>

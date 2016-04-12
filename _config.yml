@@ -24,4 +24,6 @@ sass:
 # Build settings
 markdown  : kramdown
 permalink : /:title/
-gems: [jekyll-paginate]
+gems:
+    - jekyll-paginate
+    - jekyll-redirect-from

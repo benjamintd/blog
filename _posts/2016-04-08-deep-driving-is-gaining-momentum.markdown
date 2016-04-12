@@ -4,6 +4,9 @@ title:  "Deep Driving is Gaining Momentum"
 date:   2016-04-08 10:00:03
 categories: sdc deeplearning
 comments: true
+redirect_from:
+    - "/deep-driving-is-getting-momentum/"
+    - "/deep-driving-is-getting-momentum"
 ---
 
 ![George Hotz in his test car]({{site.baseurl}}/images/posts/comma.png)

@@ -5,7 +5,9 @@ source 'http://rubygems.org'
 group :development do
   gem 'rake', '~> 10.4.2'
   gem 'sass', '~> 3.4.10'
-  gem 'jekyll', '~> 2.5.3'
+  gem 'jekyll', '3.1.2'
+  gem 'jekyll-redirect-from'
+  gem 'jekyll-paginate'
 end
 
 
