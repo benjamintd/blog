@@ -5,9 +5,43 @@
     <description>This is a blog about self-driving cars.</description>
     <link>http://benjamintd.github.io/blog/</link>
     <atom:link href="http://benjamintd.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 11 Apr 2016 18:29:08 -0700</pubDate>
-    <lastBuildDate>Mon, 11 Apr 2016 18:29:08 -0700</lastBuildDate>
+    <pubDate>Wed, 01 Jun 2016 16:05:18 -0700</pubDate>
+    <lastBuildDate>Wed, 01 Jun 2016 16:05:18 -0700</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Mapbox Drive challenges Here and Tomtom in ADAS maps</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/posts/mapbox.png&quot; alt=&quot;Robot Taxi&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Today, Mapbox introduced &lt;a href=&quot;https://www.mapbox.com/drive/&quot;&gt;Mapbox Drive&lt;/a&gt;, a new product designed to be embedded in cars to support lane by lane navigation and autonomous driving.&lt;/p&gt;
+
+&lt;p&gt;This is huge news. With this move, Mapbox enters the kingdom of automotive maps, until here dominated by TomTom and Here. In the same way that they are now a strong competitor of Google for mobile and web maps, there is a good chance that they can shake the car map industry as well.&lt;/p&gt;
+
+&lt;p&gt;For those who are not familiar with the company, Mapbox makes it easy to integrate, customize and display maps for mobile or web apps. Their maps are easily tweakable and most of their software is open-source, which makes them a developer’s best friend. Whenever there is something that the Google Maps API does not offer, Mapbox lets you do it. Thanks to that approach, they have landed major customers like Pinterest, Foursquare, MileIQ, GitHub, etc.&lt;/p&gt;
+
+&lt;p&gt;But today’s announcement changes the image of the company from selling pretty maps to delivering a complete suite of tools for mobility - lane by lane directions, traffic, autonomous guidance, powered by tons of telemetry data.&lt;/p&gt;
+
+&lt;p&gt;The same strategy which as been so successful with web and mobile may very well have the same success with car manufacturers and dashboard app developers. By culture and by design, Mapbox products are built in the open and easily integrated. This gives them an edge over the legacy mapmakers TomTom and Here, whose update cycles are slow, and are fundamentally more difficult to integrate.&lt;/p&gt;
+
+&lt;p&gt;One other crucial difference between the established map companies and Mapbox is their autonomous driving strategy. &lt;a href=&quot;https://company.here.com/automotive/intelligent-car/here-hd-live-map/&quot;&gt;Here&lt;/a&gt; and &lt;a href=&quot;http://corporate.tomtom.com/releasedetail.cfm?ReleaseID=931327&quot;&gt;TomTom&lt;/a&gt; are betting on HD maps that contain a 3D view of the world to provide accurate localization and navigation. This is intended for cars with high end hardware, in particular Lidar sensors, and requires powerful onboard computers. Those are extremely costly to build, and very heavy (in the order of gigabytes per mile). Mapbox made the choice to deliver centerlane geometries that are lightweight and built from crowdsourced data. Such a map could be delivered quickly and integrated right away with highway lane keeping technologies such as Tesla Autopilot or GM Super Cruise. Cars do not require HD maps to run those products. They are not even equiped with Lidar to consume HD maps anyway.&lt;/p&gt;
+
+&lt;p&gt;With this strategy, Mapbox might very well shortcut TomTom and Here to market in the highway autonomy space, especially because many manufacturers doubt that Here can deliver their HD map anytime soon. Eric Gundersen, their CEO, disclosed that they already have one OEM which will integrate their Drive product by the end of the year.&lt;/p&gt;
+
+&lt;p&gt;A lot of this obviously sounds familiar for me as we are building trajectory maps for ADAS systems as well, here at &lt;a href=&quot;http://exonav.com&quot;&gt;ExoNav&lt;/a&gt; (check our &lt;a href=&quot;http://exonav.com/map&quot;&gt;demo map&lt;/a&gt; built automatically from telemetry!). Hopefully this announcement will shake the mapping world and make the industry realize that this path makes the most sense to bring automation forward, so we can bring this technology to market, and finally take naps on the highway.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 01 Jun 2016 03:00:03 -0700</pubDate>
+        <link>http://benjamintd.github.io/blog/mapbox-drive/</link>
+        <guid isPermaLink="true">http://benjamintd.github.io/blog/mapbox-drive/</guid>
+        
+        
+        <category>sdc</category>
+        
+        <category>maps</category>
+        
+        <category>mapbox</category>
+        
+      </item>
     
       <item>
         <title>Deep Driving is Gaining Momentum</title>
