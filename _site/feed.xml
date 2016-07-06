@@ -5,29 +5,134 @@
     <description>This is a blog about self-driving cars.</description>
     <link>http://benjamintd.github.io/blog/</link>
     <atom:link href="http://benjamintd.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 01 Jun 2016 16:05:18 -0700</pubDate>
-    <lastBuildDate>Wed, 01 Jun 2016 16:05:18 -0700</lastBuildDate>
+    <pubDate>Wed, 06 Jul 2016 13:10:38 -0700</pubDate>
+    <lastBuildDate>Wed, 06 Jul 2016 13:10:38 -0700</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
+        <title>Teaching an AI to write Python code with Python code</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/posts/lstm.png&quot; alt=&quot;Mapbox Drive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OK, let’s drop autonomous vehicles for a second. Things are getting serious. This post is about creating a machine that writes its own code. More or less.&lt;/p&gt;
+
+&lt;p&gt;Introducing &lt;del&gt;GlaDoS&lt;/del&gt; &lt;del&gt;Skynet&lt;/del&gt; Spynet.&lt;/p&gt;
+
+&lt;p&gt;More specifically, we are going to train a character level Long Short Term Memory neural network to write code itself by feeding it Python source code. The training will run on a GPU instance on EC2, using Theano and Lasagne. If some of the words here sound obscure to you, I will do my best to explain what is happening.&lt;/p&gt;
+
+&lt;p&gt;This experiment is greatly inspired by &lt;a href=&quot;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&quot;&gt;this awesome blog post&lt;/a&gt; that I highly recommend reading.&lt;/p&gt;
+
+&lt;p&gt;I am by no means an expert on deep learning, and this is my first time fooling around with Theano and GPU computing. I hope this post will show how easy it is to get started.&lt;/p&gt;
+
+&lt;h2 id=&quot;some-background&quot;&gt;Some background&lt;/h2&gt;
+
+&lt;p&gt;Neural networks are a family of machine learning algorithms that process the inputs by running them through layers of artificial neurons to generate some output. Training happens by comparing the expected output to what the network delivers, and changing the weights between neurons to try making them as close as possible. The math involves a lot of big matrix multiplications, and GPUs are really good at doing those quickly, which is why the recent advances in GPU computing made deep learning so popular and so much more efficient.&lt;/p&gt;
+
+&lt;p&gt;A lot of research goes into designing network architectures that are easy to train and that are efficient on certain types of tasks. Feed-forward architectures like convolutional nets are very good to deal with image recognition for instance. Here, we are going to talk about &lt;a href=&quot;https://en.wikipedia.org/wiki/Recurrent_neural_network&quot;&gt;recurrent neural networks&lt;/a&gt;, which are good at processing sequences. One of the most popular architectures of RNN is &lt;a href=&quot;http://colah.github.io/posts/2015-08-Understanding-LSTMs/&quot;&gt;Long Short Term Memory (LSTM)&lt;/a&gt;  &amp;lt;– read this post if you want to know what is happening and why it is so good at dealing with long sequences.&lt;/p&gt;
+
+&lt;p&gt;We are going to use LSTM on sequences of characters. What happens is that we feed the network sequences of characters, and the network has to guess what the next character shall be. For instance, if the input is “chocol”, we expect the character “a” to follow. What is remarkable about LSTM is that they can learn long term dependencies. For instance, it can learn that it has to close parenthesis if it has seen the character “(“, and will do so even if the opening parenthesis was seen a thousand characters earlier.&lt;/p&gt;
+
+&lt;p&gt;As I said earlier, GPUs are much quicker to train such neural networks. The most popular framework for GPU computing is &lt;a href=&quot;https://en.wikipedia.org/wiki/CUDA&quot;&gt;CUDA&lt;/a&gt;, provided by Nvidia. Most Deep Learning libraries have some interface to CUDA and allow you to perform computations of a GPU. As I write in Python, the most natural choice for me was &lt;a href=&quot;http://deeplearning.net/software/theano/&quot;&gt;Theano&lt;/a&gt;, a very efficient library for tensor calculations. On top of Theano sits &lt;a href=&quot;https://github.com/Lasagne/Lasagne&quot;&gt;Lasagne&lt;/a&gt;, a Python library that makes it easier to define layers of neurons, and has a very simple API to set up a LSTM network.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1-firing-up-a-gpu-instance&quot;&gt;Step 1: Firing up a GPU instance&lt;/h2&gt;
+
+&lt;p&gt;We are going to launch a g2.2xlarge instance and install everything we need in order to run our code. Most of the instructions are foundable &lt;a href=&quot;http://markus.com/install-theano-on-aws/&quot;&gt;here&lt;/a&gt;, so I am not going to rewrite them. I also installed &lt;a href=&quot;https://github.com/Lasagne/Lasagne&quot;&gt;&lt;strong&gt;Lasagne&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;https://ipython.org/&quot;&gt;&lt;strong&gt;IPython&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;http://jupyter.org/&quot;&gt;&lt;strong&gt;Jupyter&lt;/strong&gt;&lt;/a&gt; to write my code via Notebooks. The resulting AMI (with the rest of the code included) is available on the N. California zone on AWS with this id: &lt;code class=&quot;highlighter-rouge&quot;&gt;ami-64f6b104&lt;/code&gt;. For more information on how to set up an AWS account and launch an AMI, you can refer to Amazon’s &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html&quot;&gt;documentation&lt;/a&gt; directly.&lt;/p&gt;
+
+&lt;p&gt;We are going to use a Jupyter Notebook to write our code. I created a bash script that allows to configure the Notebook server, in order to serve it to your laptop. You will be able to write code directly in your browser and have it run on your instance. I basically followed &lt;a href=&quot;http://efavdb.com/deep-learning-with-jupyter-on-aws/&quot;&gt;these instructions&lt;/a&gt;. Be sure to rewrite line 24 of the script to set your own password.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-gathering-some-training-data&quot;&gt;Step 2: Gathering some training data&lt;/h2&gt;
+
+&lt;p&gt;Ok, so we want to train a neural net to write some Python code. The first step for us is to try to find as much Python code available as possible. Fortunately there are a lot of open-source projects in Python.&lt;/p&gt;
+
+&lt;p&gt;I concatenated the &lt;code class=&quot;highlighter-rouge&quot;&gt;.py&lt;/code&gt; files that do not contain &lt;code class=&quot;highlighter-rouge&quot;&gt;test&lt;/code&gt; in their name for the following libraries: Pandas, Numpy, Scipy, Django, Scikit-Learn, PyBrain, Lasagne, Rasterio. This gives us a single file that weights about 27 MB. That is a reasonable amount of training data, but more would definitely be better.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3-writing-code-and-enjoying-&quot;&gt;Step 3: Writing code and enjoying :)&lt;/h2&gt;
+
+&lt;p&gt;We can now write our code to train a LSTM network on Python code. This will be wildly inspired from this &lt;a href=&quot;https://github.com/Lasagne/Recipes/blob/master/examples/lstm_text_generation.py&quot;&gt;Lasagne receipe&lt;/a&gt;. In fact there is very little to change apart from the training data.&lt;/p&gt;
+
+&lt;p&gt;The network takes a few hours to train. We will be saving the network weights with cPickle.&lt;/p&gt;
+
+&lt;p&gt;After that, we can enjoy the first few lines of code that our little Spynet outputs:&lt;/p&gt;
+
+&lt;p&gt;I think Spynet is tired already:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;assert os = self.retire()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It defines &lt;code class=&quot;highlighter-rouge&quot;&gt;__init__&lt;/code&gt; functions and adds comments:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def __init__(self, other):
+    # Compute the minimum the solve to the matrix explicite dimensions should be a copy of the functions in self.shape[0] != None
+    if isspmatrix(other):
+        return result
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It learned to - approximately - use Numpy…&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if not system is None:
+    if res == 1:
+        return filter(a, axis, - 1, z) / (w[0])
+    if a = np.asarray(num + 1) * t)
+    # Conditions and the filter objects for more initial for all of the filter to be in the output.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;… And to define almost correct arrays (with one little syntax error). Note the correct indentation for line continuation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;array([[0, 1, 2, 2],
+       [70, 0, 2, 3, 4], [0], [3, 3],
+       [10, 32, 35, 24, 32, 40, 19],
+       [002, 10, 13, 12, 1],
+       [0, 1, 1],
+       [25, 12, 51, 42, 15, 22, 55, 59, 37, 20, 44, 24, 52, 34, 26, 25, 17, 32, 13, 43, 22, 44, 43, 34, 82, 06],
+       [0.42,  3.61.,  7.78, 0.957,  1.649,  2.672,  6.00126248,  1.079333574],  0.2016347110,  0.13763432],
+       [0, 4, 9],
+       [13, 12, 32, 42, 42, 20, 34, 20, 12, 24, 30, 20, 10, 32, 45],
+       [0, 0, 0],
+       [20, 42, 75, 35]])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ok, we may be far from a self-coding computer, but this is not bad for a network that had to learn everything from reading example code. Especially considering that it is only trying to guess what is coming next character by character. The indentation is often correct, and it remembers to close parenthesis and brackets.&lt;/p&gt;
+
+&lt;p&gt;However it mixes docstring text and code, and I did not find any function that would actually compile in the output. I am sure that training a bigger network as the one in &lt;a href=&quot;http://karpathy.github.io/2015/05/21/rnn-effectiveness/&quot;&gt;this&lt;/a&gt; article would improve things.  Additionally, loss was still going down when I stopped training so there was still room for improvement in the output if I waited a bit more.&lt;/p&gt;
+
+&lt;p&gt;The complete script used for training can be found &lt;a href=&quot;https://gist.github.com/benjamintd/2de2e9a156fe619dbdad762fe1cf84e1&quot;&gt;here&lt;/a&gt;. Feel free to use the AMI and improve things!&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 06 Jul 2016 03:00:03 -0700</pubDate>
+        <link>http://benjamintd.github.io/blog/spynet/</link>
+        <guid isPermaLink="true">http://benjamintd.github.io/blog/spynet/</guid>
+        
+        
+        <category>deep-learning</category>
+        
+        <category>ai</category>
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
         <title>Mapbox Drive challenges Here and Tomtom in ADAS maps</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/posts/mapbox.png&quot; alt=&quot;Robot Taxi&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/posts/mapbox.png&quot; alt=&quot;Mapbox Drive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Today, Mapbox introduced &lt;a href=&quot;https://www.mapbox.com/drive/&quot;&gt;Mapbox Drive&lt;/a&gt;, a new product designed to be embedded in cars to support lane by lane navigation and autonomous driving.&lt;/p&gt;
 
-&lt;p&gt;This is huge news. With this move, Mapbox enters the kingdom of automotive maps, until here dominated by TomTom and Here. In the same way that they are now a strong competitor of Google for mobile and web maps, there is a good chance that they can shake the car map industry as well.&lt;/p&gt;
+&lt;p&gt;This is huge news. With this move, Mapbox enters the kingdom of automotive maps, now dominated by TomTom and Here. In the same way that they are now a strong competitor of Google for mobile and web maps, there is a good chance that they can shake the car maps industry as well.&lt;/p&gt;
 
-&lt;p&gt;For those who are not familiar with the company, Mapbox makes it easy to integrate, customize and display maps for mobile or web apps. Their maps are easily tweakable and most of their software is open-source, which makes them a developer’s best friend. Whenever there is something that the Google Maps API does not offer, Mapbox lets you do it. Thanks to that approach, they have landed major customers like Pinterest, Foursquare, MileIQ, GitHub, etc.&lt;/p&gt;
+&lt;p&gt;For those who are not familiar with the company, Mapbox makes it easy to integrate, customize and display maps for mobile or web apps. Their maps are tweakable and most of their software is open-source, which makes them a developer’s best friend. Whenever there is something that the Google Maps API does not offer, Mapbox lets you do it. Thanks to that approach, they have landed major customers like Pinterest, Foursquare, MileIQ, GitHub, etc.&lt;/p&gt;
 
-&lt;p&gt;But today’s announcement changes the image of the company from selling pretty maps to delivering a complete suite of tools for mobility - lane by lane directions, traffic, autonomous guidance, powered by tons of telemetry data.&lt;/p&gt;
+&lt;p&gt;But today’s announcement changes the image of the company from selling pretty maps to delivering a complete suite of tools for mobility - lane by lane directions, traffic, autonomous guidance, powered by tons of telemetry data. This comes in addition of their current satellite and streets products.&lt;/p&gt;
 
-&lt;p&gt;The same strategy which as been so successful with web and mobile may very well have the same success with car manufacturers and dashboard app developers. By culture and by design, Mapbox products are built in the open and easily integrated. This gives them an edge over the legacy mapmakers TomTom and Here, whose update cycles are slow, and are fundamentally more difficult to integrate.&lt;/p&gt;
+&lt;p&gt;Their successful strategy with web and mobile maps may very well have the same success with car manufacturers and dashboard app developers. Mapbox makes the bet of building their products in the open and designs the easiest SDKs to integrate. This reputation and know-how should give Mapbox Drive an edge over the legacy mapmakers TomTom and Here. Their update cycles are slow, and their skills revolve around map creation, not so much map integration and delivery.&lt;/p&gt;
 
-&lt;p&gt;One other crucial difference between the established map companies and Mapbox is their autonomous driving strategy. &lt;a href=&quot;https://company.here.com/automotive/intelligent-car/here-hd-live-map/&quot;&gt;Here&lt;/a&gt; and &lt;a href=&quot;http://corporate.tomtom.com/releasedetail.cfm?ReleaseID=931327&quot;&gt;TomTom&lt;/a&gt; are betting on HD maps that contain a 3D view of the world to provide accurate localization and navigation. This is intended for cars with high end hardware, in particular Lidar sensors, and requires powerful onboard computers. Those are extremely costly to build, and very heavy (in the order of gigabytes per mile). Mapbox made the choice to deliver centerlane geometries that are lightweight and built from crowdsourced data. Such a map could be delivered quickly and integrated right away with highway lane keeping technologies such as Tesla Autopilot or GM Super Cruise. Cars do not require HD maps to run those products. They are not even equiped with Lidar to consume HD maps anyway.&lt;/p&gt;
+&lt;p&gt;One other crucial difference between the established map companies and Mapbox is their autonomous driving strategy. &lt;a href=&quot;https://company.here.com/automotive/intelligent-car/here-hd-live-map/&quot;&gt;Here&lt;/a&gt; and &lt;a href=&quot;http://corporate.tomtom.com/releasedetail.cfm?ReleaseID=931327&quot;&gt;TomTom&lt;/a&gt; are betting on HD maps that contain a 3D view of the world to provide accurate localization and navigation. This is intended for cars with high end hardware, in particular Lidar sensors, and requires powerful onboard computers to process 3D data. Those maps are extremely costly to build, and very heavy (in the order of gigabytes per mile). Mapbox made the choice to deliver centerlane geometries that are lightweight and built from crowdsourced data. Such a map could be delivered quickly and integrated right away with highway lane keeping technologies such as Tesla Autopilot or GM Super Cruise. Cars do not require HD maps to run those products. They are not even equiped with Lidar to consume HD maps anyway.&lt;/p&gt;
 
-&lt;p&gt;With this strategy, Mapbox might very well shortcut TomTom and Here to market in the highway autonomy space, especially because many manufacturers doubt that Here can deliver their HD map anytime soon. Eric Gundersen, their CEO, disclosed that they already have one OEM which will integrate their Drive product by the end of the year.&lt;/p&gt;
+&lt;p&gt;With this strategy, Mapbox might very well shortcut TomTom and Here to market in the highway autonomy space, especially because I hear that many manufacturers doubt the ability of Here to deliver their HD map anytime soon. Eric Gundersen, Mapbox CEO, disclosed that they already have one OEM which will integrate their Drive product by the end of the year.&lt;/p&gt;
 
-&lt;p&gt;A lot of this obviously sounds familiar for me as we are building trajectory maps for ADAS systems as well, here at &lt;a href=&quot;http://exonav.com&quot;&gt;ExoNav&lt;/a&gt; (check our &lt;a href=&quot;http://exonav.com/map&quot;&gt;demo map&lt;/a&gt; built automatically from telemetry!). Hopefully this announcement will shake the mapping world and make the industry realize that this path makes the most sense to bring automation forward, so we can bring this technology to market, and finally take naps on the highway.&lt;/p&gt;
+&lt;p&gt;A lot of this obviously sounds familiar for me as we are building trajectory maps for ADAS systems as well, here at &lt;a href=&quot;http://exonav.com&quot;&gt;ExoNav&lt;/a&gt; (check our &lt;a href=&quot;http://exonav.com/map&quot;&gt;demo map&lt;/a&gt; built automatically from telemetry!). Hopefully this announcement will shake the mapping world and make the industry realize that this type of map product makes the most sense to bring automation forward. This way we can bring autonomous technology to market sooner, and finally be able to take naps on the highway.&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 01 Jun 2016 03:00:03 -0700</pubDate>
